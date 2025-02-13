@@ -96,7 +96,16 @@
             <option value="">Select Class</option>
           </select>
 
-          <div class="module-buttons" id="module-buttons"></div>
+          <div class="module-buttons" id="module-buttons">
+            <button class="M1">M1</button>
+            <button class="M2">M2</button>
+            <button class="M3">M3</button>
+            <button class="M4">M4</button>
+            <button class="M5">M5</button>
+            <button class="M6/7">M6/7</button>
+            <button class="M8/9">M8/9</button>
+            <button class="M10/11">M10/11</button>
+          </div>
 
           <table class="pole-table" id="pole-table">
             <thead>
@@ -881,7 +890,7 @@
               const classDropdown = document.getElementById("pole-class");
               classDropdown.innerHTML =
                 '<option value="">Select Class</option>';
-              document.getElementById("module-buttons").innerHTML = "";
+              //   document.getElementById("module-buttons").innerHTML = "";
               document.getElementById("pole-data").innerHTML = "";
 
               if (length && poleData[length]) {
@@ -905,7 +914,7 @@
               const moduleContainer = document.getElementById("module-buttons");
               const poleTable = document.getElementById("pole-data");
 
-              moduleContainer.innerHTML = "";
+              //   moduleContainer.innerHTML = "";
               poleTable.innerHTML = "";
 
               if (
