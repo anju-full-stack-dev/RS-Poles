@@ -26,6 +26,24 @@
             border-radius: 5px;
             width: 100%;
           }
+          .selectors {
+            display: flex;
+            flex-grow: 1;
+            margin-bottom: 20px;
+            column-gap: 20px;
+          }
+          .selectors div {
+            flex-grow: 1;
+            display: flex;
+            gap: 4px;
+          }
+          .selectors label {
+            white-space: nowrap;
+            display: inline-block;
+            color: gray;
+            font-size: 16px;
+          }
+
           .module-buttons {
             display: flex;
             gap: 10px;
@@ -61,41 +79,45 @@
 
         <div class="pole-selector-container">
           <h2>Pole Selector</h2>
-
-          <label for="pole-length">Pole Length:</label>
-          <select id="pole-length">
-            <option value="">Select Length</option>
-            <option value="30">30 ft</option>
-            <option value="35">35 ft</option>
-            <option value="40">40 ft</option>
-            <option value="45">45 ft</option>
-            <option value="50">50 ft</option>
-            <option value="55">55 ft</option>
-            <option value="60">60 ft</option>
-            <option value="65">65 ft</option>
-            <option value="70">70 ft</option>
-            <option value="75">75 ft</option>
-            <option value="80">80 ft</option>
-            <option value="85">85 ft</option>
-            <option value="90">90 ft</option>
-            <option value="95">95 ft</option>
-            <option value="100">100 ft</option>
-            <option value="105">105 ft</option>
-            <option value="110">110 ft</option>
-            <option value="115">115 ft</option>
-            <option value="120">120 ft</option>
-            <option value="125">125 ft</option>
-            <option value="130">130 ft</option>
-            <option value="135">135 ft</option>
-            <option value="140">140 ft</option>
-            <option value="145">145 ft</option>
-            <option value="150">150 ft</option>
-          </select>
-
-          <label for="pole-class">Pole Class:</label>
-          <select id="pole-class" disabled>
-            <option value="">Select Class</option>
-          </select>
+          <div class="selectors">
+            <div>
+              <label for="pole-length">Pole Length:</label>
+              <select id="pole-length">
+                <option value="">Select Length</option>
+                <option value="30">30 ft</option>
+                <option value="35">35 ft</option>
+                <option value="40">40 ft</option>
+                <option value="45">45 ft</option>
+                <option value="50">50 ft</option>
+                <option value="55">55 ft</option>
+                <option value="60">60 ft</option>
+                <option value="65">65 ft</option>
+                <option value="70">70 ft</option>
+                <option value="75">75 ft</option>
+                <option value="80">80 ft</option>
+                <option value="85">85 ft</option>
+                <option value="90">90 ft</option>
+                <option value="95">95 ft</option>
+                <option value="100">100 ft</option>
+                <option value="105">105 ft</option>
+                <option value="110">110 ft</option>
+                <option value="115">115 ft</option>
+                <option value="120">120 ft</option>
+                <option value="125">125 ft</option>
+                <option value="130">130 ft</option>
+                <option value="135">135 ft</option>
+                <option value="140">140 ft</option>
+                <option value="145">145 ft</option>
+                <option value="150">150 ft</option>
+              </select>
+            </div>
+            <div>
+              <label for="pole-class">Pole Class:</label>
+              <select id="pole-class" disabled>
+                <option value="">Select Class</option>
+              </select>
+            </div>
+          </div>
           <div class="img-container">
             <img
               src="https://www.rspoles.com/sites/default/files/subfoot/poles-module.png"
