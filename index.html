@@ -924,12 +924,15 @@
                 poleData[length][poleClass]
               ) {
                 const pole = poleData[length][poleClass];
-
+                const moduleButtons =
+                  moduleContainer.querySelectorAll("button");
+                moduleButtons.forEach((btn) => btn.classList.remove("active"));
                 pole.modules.forEach((module) => {
-                  const btn = document.createElement("button");
-                  btn.textContent = module;
-                  btn.classList.add("active");
-                  moduleContainer.appendChild(btn);
+                  moduleButtons.forEach((button) => {
+                    if (button.classList.contains(module)) {
+                      button.classList.add("active");
+                    }
+                  });
                 });
 
                 poleTable.innerHTML = `
