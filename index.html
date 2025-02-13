@@ -13,6 +13,30 @@
       </head>
       <body>
         <style>
+          body {
+            font-family: Arial, sans-serif;
+          }
+          #progress-container {
+            display: flex;
+            width: 100%;
+            height: 20px;
+            margin: 20px auto;
+            border: 1px solid #000;
+            background: #f0f0f0;
+            position: relative;
+          }
+
+          .progress-segment {
+            flex: 1;
+            height: 100%;
+            border-right: 1px solid #ccc;
+            background: #ffffff;
+            transition: background 0.3s ease-in-out;
+          }
+
+          .progress-segment:last-child {
+            border-right: none;
+          }
           .pole-selector-container {
             max-width: 900px;
             margin: 0 auto;
@@ -47,7 +71,7 @@
           .module-buttons {
             display: flex;
             gap: 10px;
-            margin-bottom: 20px;
+            margin: 20px auto;
           }
           .module-buttons button {
             background: #f0f0f0;
@@ -55,6 +79,9 @@
             padding: 10px 15px;
             border-radius: 20px;
             cursor: pointer;
+          }
+          .active {
+            background: #b3c7ff !important;
           }
           .module-buttons button.active {
             background: #667eea;
@@ -118,11 +145,15 @@
               </select>
             </div>
           </div>
-          <div class="img-container">
-            <img
-              src="https://www.rspoles.com/sites/default/files/subfoot/poles-module.png"
-              alt=""
-            />
+          <div id="progress-container">
+            <div class="progress-segment M1"></div>
+            <div class="progress-segment M2"></div>
+            <div class="progress-segment M3"></div>
+            <div class="progress-segment M4"></div>
+            <div class="progress-segment M5"></div>
+            <div class="progress-segment M6/7"></div>
+            <div class="progress-segment M8/9"></div>
+            <div class="progress-segment M10/11"></div>
           </div>
 
           <div class="module-buttons" id="module-buttons">
@@ -150,7 +181,17 @@
             </thead>
             <tbody id="pole-data"></tbody>
           </table>
-          <p>Note: The RS pole selector is based on CSA Grade 2 construction with a maximum AGH deflection limit of 22% at class load for tangent and self supporting poles with line angles ≤3°. The M5/6 is not shown in the module tree as it is a base only module that stacks under the M4. The AGH shown is based on a standard embedment assumption of 10% of the pole height plus 2 ft. [0.61m] for poles 40 ft. [12.2m] and over and 10% plus 2.5 ft. [0.76m] for poles less than 40 ft. [12.2m]. The RS pole selector is for demonstration purposes only. Contact RS to confirm the correct pole for your application.</p>
+          <p>
+            Note: The RS pole selector is based on CSA Grade 2 construction with
+            a maximum AGH deflection limit of 22% at class load for tangent and
+            self supporting poles with line angles ≤3°. The M5/6 is not shown in
+            the module tree as it is a base only module that stacks under the
+            M4. The AGH shown is based on a standard embedment assumption of 10%
+            of the pole height plus 2 ft. [0.61m] for poles 40 ft. [12.2m] and
+            over and 10% plus 2.5 ft. [0.76m] for poles less than 40 ft.
+            [12.2m]. The RS pole selector is for demonstration purposes only.
+            Contact RS to confirm the correct pole for your application.
+          </p>
         </div>
 
         <script>
@@ -920,6 +961,11 @@
                 '<option value="">Select Class</option>';
               //   document.getElementById("module-buttons").innerHTML = "";
               document.getElementById("pole-data").innerHTML = "";
+              const progressContainer =
+                document.getElementById("progress-container");
+              const progressButtons = progressContainer.querySelectorAll("div");
+              progressButtons.forEach((div) => div.classList.remove("active"));
+
               const moduleContainer = document.getElementById("module-buttons");
               const moduleButtons = moduleContainer.querySelectorAll("button");
               moduleButtons.forEach((btn) => btn.classList.remove("active"));
@@ -942,6 +988,8 @@
             .addEventListener("change", function () {
               const length = document.getElementById("pole-length").value;
               const poleClass = this.value;
+              const progressContainer =
+                document.getElementById("progress-container");
               const moduleContainer = document.getElementById("module-buttons");
               const poleTable = document.getElementById("pole-data");
 
@@ -955,14 +1003,25 @@
                 poleData[length][poleClass]
               ) {
                 const pole = poleData[length][poleClass];
+                const progressButtons =
+                  progressContainer.querySelectorAll("div");
+                progressButtons.forEach((div) =>
+                  div.classList.remove("active")
+                );
                 const moduleButtons =
                   moduleContainer.querySelectorAll("button");
                 moduleButtons.forEach((btn) => btn.classList.remove("active"));
+
                 pole.modules.forEach((module) => {
                   moduleButtons.forEach((button) => {
                     if (button.classList.contains(module)) {
                       button.classList.add("active");
                     }
+                    progressButtons.forEach((div) => {
+                      if (div.classList.contains(module)) {
+                        div.classList.add("active");
+                      }
+                    });
                   });
                 });
 
