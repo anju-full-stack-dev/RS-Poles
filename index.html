@@ -23,7 +23,6 @@
             height: 20px;
             margin: 20px auto;
             /* border: 1px solid #000; */
-            background: #f0f0f0;
             position: relative;
           }
 
@@ -31,40 +30,52 @@
             flex: 1;
             height: 100%;
             border-right: 1px solid #ccc;
-            background: #ffffff;
+            background: #090909;
             transition: background 0.3s ease-in-out;
           }
           .progress-segment.M1 {
-            height: 12px;
+            flex-grow: 1;
+            height: 10px;
             border: 1px solid lightgray;
+            background-color: white;
+          }
+          .progress-segment-joint {
+            height: 12px;
           }
           .progress-segment.M2 {
             height: 14px;
             border: 1px solid lightgray;
+            background-color: white;
           }
           .progress-segment.M3 {
             height: 16px;
             border: 1px solid lightgray;
+            background-color: white;
           }
           .progress-segment.M4 {
             height: 18px;
             border: 1px solid lightgray;
+            background-color: white;
           }
           .progress-segment.M5 {
             height: 20px;
             border: 1px solid lightgray;
+            background-color: white;
           }
           .progress-segment.M6-7 {
             height: 22px;
             border: 1px solid lightgray;
+            background-color: white;
           }
           .progress-segment.M8-9 {
             height: 24px;
             border: 1px solid lightgray;
+            background-color: white;
           }
           .progress-segment.M10-11 {
             height: 26px;
             border: 1px solid lightgray;
+            background-color: white;
           }
           .pole-selector-container {
             max-width: 900px;
@@ -110,7 +121,7 @@
             cursor: pointer;
           }
           .active {
-            background: #b3c7ff !important;
+            background: #005697 !important;
             border: none;
           }
           .module-buttons button.active {
@@ -195,12 +206,19 @@
           </div>
           <div id="progress-container">
             <div class="progress-segment M1"></div>
+            <div class="progress-segment-joint"></div>
             <div class="progress-segment M2"></div>
+            <div class="progress-segment-joint"></div>
             <div class="progress-segment M3"></div>
+            <div class="progress-segment-joint"></div>
             <div class="progress-segment M4"></div>
+            <div class="progress-segment-joint"></div>
             <div class="progress-segment M5"></div>
+            <div class="progress-segment-joint"></div>
             <div class="progress-segment M6/7 M6-7"></div>
+            <div class="progress-segment-joint"></div>
             <div class="progress-segment M8/9 M8-9"></div>
+            <div class="progress-segment-joint"></div>
             <div class="progress-segment M10/11 M10-11"></div>
           </div>
 
