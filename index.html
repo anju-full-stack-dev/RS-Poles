@@ -66,10 +66,6 @@
             height: 26px;
             border: 1px solid lightgray;
           }
-
-          /* .progress-segment:last-child {
-            border-right: none;
-          } */
           .pole-selector-container {
             max-width: 900px;
             margin: 0 auto;
@@ -143,6 +139,11 @@
           }
           .img-container img {
             width: 100%;
+          }
+          .note {
+            font-size: 12px;
+            line-height: 2;
+            color: gray;
           }
         </style>
 
@@ -228,7 +229,7 @@
             </thead>
             <tbody id="pole-data"></tbody>
           </table>
-          <p>
+          <p class="note">
             Note: The RS pole selector is based on CSA Grade 2 construction with
             a maximum AGH deflection limit of 22% at class load for tangent and
             self supporting poles with line angles ≤3°. The M5/6 is not shown in
