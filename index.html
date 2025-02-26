@@ -31,14 +31,21 @@
             background: #090909;
             transition: background 0.3s ease-in-out;
           }
+
+          .progress-segment-joint {
+            height: 12px;
+          }
           .progress-segment.M1 {
             flex-grow: 1;
             height: 10px;
             border: 1px solid lightgray;
             background-color: white;
           }
-          .progress-segment-joint {
-            height: 12px;
+          .progress-segment.M1-L {
+            flex-grow: 1;
+            height: 10px;
+            border: 1px solid lightgray;
+            background-color: white;
           }
           .progress-segment.M2 {
             height: 14px;
@@ -222,7 +229,7 @@
             </div>
           </div>
           <div id="progress-container">
-            <div class="progress-segment M1"></div>
+            <div class="progress-segment M1 M1-L"></div>
             <div class="progress-segment-joint"></div>
             <div class="progress-segment M2"></div>
             <div class="progress-segment-joint"></div>
@@ -433,7 +440,7 @@
                 basePlateOd: "21.5 [54.6]",
               },
               3: {
-                modules: ["M1", "M2"],
+                modules: ["M1L", "M2"],
                 imperial: "RSP-0350-F-1L02-C",
                 metric: "RSP-0107-M-1L02-C",
                 agh: "29 [8.84]",
@@ -1474,16 +1481,6 @@
                 baseOd: "27.9 [70.9]",
                 basePlateOd: "31.1 [79.0]",
               },
-              3: {
-                modules: ["M2", "M3", "M4", "M5", "M6/7"],
-                imperial: "RSP-0900-F-0207-C",
-                metric: "RSP-0274-M-0207-C",
-                agh: "79 [24.08]",
-                weight: "1908 [867]",
-                tipOd: "9.6 [24.38]",
-                baseOd: "27.9 [70.9]",
-                basePlateOd: "31.1 [79.0]",
-              },
             },
             95: {
               H6: {
@@ -2124,6 +2121,9 @@
                 if (btn.innerHTML.trim() === "M5/6") {
                   btn.innerHTML = "M5";
                 }
+                if (btn.innerHTML.trim() === "M1L") {
+                  btn.innerHTML = "M1";
+                }
               });
 
               if (length && poleData[length]) {
@@ -2148,8 +2148,6 @@
                 document.getElementById("progress-container");
               const moduleContainer = document.getElementById("module-buttons");
               const poleTable = document.getElementById("pole-data");
-
-              // Clear existing table data
               poleTable.innerHTML = "";
 
               if (
@@ -2169,10 +2167,17 @@
                 moduleButtons.forEach((btn) => btn.classList.remove("active"));
 
                 let hasM5_6 = pole.modules.includes("M5/6");
+                let hasM1L = pole.modules.includes("M1L");
                 pole.modules.forEach((module) => {
                   moduleButtons.forEach((button) => {
                     if (button.classList.contains(module)) {
                       button.classList.add("active");
+                    }
+                    if (hasM1L) {
+                      if (button.classList.contains("M1")) {
+                        button.classList.add("active");
+                        button.textContent = "M1L";
+                      }
                     }
                     if (hasM5_6) {
                       if (button.classList.contains("M5")) {
@@ -2187,6 +2192,9 @@
 
                   progressSegments.forEach((div) => {
                     if (div.classList.contains(module)) {
+                      div.classList.add("active");
+                    }
+                    if (hasM1L && div.classList.contains("M1")) {
                       div.classList.add("active");
                     }
                     if (hasM5_6 && div.classList.contains("M5")) {
